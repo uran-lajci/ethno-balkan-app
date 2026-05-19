@@ -98,7 +98,7 @@ if paper_cols:
     edited = st.data_editor(
         st.session_state.matrix,
         num_rows="dynamic",
-        use_container_width=True,
+        width='content',
         height=600,
         column_config={
             "Genus": st.column_config.TextColumn("Genus", disabled=False),
@@ -114,7 +114,7 @@ if paper_cols:
         persist()
 else:
     st.info("No papers yet. Upload PDFs or a CSV from the sidebar.")
-    st.dataframe(st.session_state.matrix, use_container_width=True, height=600)
+    st.dataframe(st.session_state.matrix, width='content', height=600)
 
 # Manual column add/remove
 with st.expander("Add / remove a paper column manually"):
@@ -174,7 +174,7 @@ else:
         elif len(selected) in (2, 3):
             from matplotlib_venn import venn2, venn3
 
-            fig, ax = plt.subplots(figsize=(7, 6))
+            fig, ax = plt.subplots(figsize=(5, 3))
             if len(selected) == 2:
                 venn2([sets[selected[0]], sets[selected[1]]],
                       set_labels=selected, ax=ax)
@@ -205,6 +205,6 @@ else:
                         "in all of these": len(inter),
                         "exclusively these": len(only),
                     })
-            st.dataframe(pd.DataFrame(rows), use_container_width=True)
+            st.dataframe(pd.DataFrame(rows), width='content')
     elif len(selected) > 6:
         st.warning("Pick at most 6 papers.")
