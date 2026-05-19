@@ -1,0 +1,6 @@
+.idea/*
+papers/*
+data/*
+ground_truth/*
+prediction/*
+**/__pycache__*/*
